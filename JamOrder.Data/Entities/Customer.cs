@@ -5,7 +5,6 @@ namespace JamOrder.Data.Entities
     [Table("Customer")]
     public class Customer : BaseEntity
     {
-        public string CustomerId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

@@ -4,6 +4,7 @@ using FluentValidation.AspNetCore;
 using HealthChecks.UI.Client;
 using JamOrder.Core.Helpers.Autofac;
 using JamOrder.Core.Middleware;
+using JamOrder.Data.Extensions;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Localization;
 using Serilog;
@@ -23,12 +24,13 @@ try
     builder.Host.UseSerilog((ctx, lc) => lc
        .WriteTo.Console()
        .ReadFrom.Configuration(ctx.Configuration));
-
+    builder.Services.RegisterDatabaseService(builder.Configuration);
     builder.Services.AddControllers()
             .AddFluentValidation(s =>
             {
                 s.RegisterValidatorsFromAssemblyContaining<Program>();
             });
+
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerService();
