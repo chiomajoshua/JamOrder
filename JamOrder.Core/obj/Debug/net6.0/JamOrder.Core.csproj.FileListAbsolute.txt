@@ -1,0 +1,15 @@
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.csproj.AssemblyReference.cache
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.AssemblyInfoInputs.cache
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.AssemblyInfo.cs
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.csproj.CoreCompileInputs.cache
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\bin\Debug\net6.0\JamOrder.Core.deps.json
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\bin\Debug\net6.0\JamOrder.Core.dll
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\bin\Debug\net6.0\ref\JamOrder.Core.dll
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\bin\Debug\net6.0\JamOrder.Core.pdb
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\bin\Debug\net6.0\JamOrder.Data.dll
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\bin\Debug\net6.0\JamOrder.Data.pdb
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.csproj.CopyComplete
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.dll
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\ref\JamOrder.Core.dll
+C:\Users\JoshuaChioma\source\repos\JamOrder\JamOrder.Core\obj\Debug\net6.0\JamOrder.Core.pdb
