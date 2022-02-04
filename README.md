@@ -7,7 +7,9 @@ We are building a web app for food ordering. The app is going to be built with t
     .
     ├── app                     # Application Source Files.
     |   ├── api
-    |        └── Pargo.Web       # Pargo Web API
+    |        └── JamOrder.Web   # JamOrder Web API
+             └── JamOrder.Core  # Core Logic
+             └── JamOrder.Data  # Database Layer
     ├── .gitignore              # Git ignore.
     ├── README.md               # This file.
     
