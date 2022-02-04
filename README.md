@@ -14,6 +14,6 @@ We are building a web app for food ordering. The app is going to be built with t
     ├── README.md               # This file.
     
     
-    | app | url |
+| app | url |
 | --- | --- |
 | JamOrder API Health  | [http://localhost:5000/health](http://localhost:5000/health) |
