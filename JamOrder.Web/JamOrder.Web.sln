@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamOrder.Web", "JamOrder.Web.csproj", "{CBFAD970-2917-4117-9985-F4357F5B036A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamOrder.Data", "..\JamOrder.Data\JamOrder.Data.csproj", "{72F3EB08-5476-4D5C-BB2A-D92D96474A28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamOrder.Core", "..\JamOrder.Core\JamOrder.Core.csproj", "{F93ED8D1-593B-44B0-A4FD-D50C3E4BAD8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{CBFAD970-2917-4117-9985-F4357F5B036A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBFAD970-2917-4117-9985-F4357F5B036A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBFAD970-2917-4117-9985-F4357F5B036A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F3EB08-5476-4D5C-BB2A-D92D96474A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F3EB08-5476-4D5C-BB2A-D92D96474A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F3EB08-5476-4D5C-BB2A-D92D96474A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F3EB08-5476-4D5C-BB2A-D92D96474A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93ED8D1-593B-44B0-A4FD-D50C3E4BAD8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93ED8D1-593B-44B0-A4FD-D50C3E4BAD8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93ED8D1-593B-44B0-A4FD-D50C3E4BAD8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93ED8D1-593B-44B0-A4FD-D50C3E4BAD8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
