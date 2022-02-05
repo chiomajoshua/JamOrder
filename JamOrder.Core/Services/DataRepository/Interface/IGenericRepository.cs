@@ -10,5 +10,6 @@ namespace JamOrder.Core.DataRepository.Interface
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
         Task<bool> InsertAsync(T entity);
         Task<bool> UpdateAsync(T entity, params Expression<Func<T, object>>[] includes);
+        Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate);
     }
 }

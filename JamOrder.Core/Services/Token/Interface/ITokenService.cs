@@ -1,5 +1,4 @@
 ﻿using JamOrder.Core.Helpers.Autofac;
-using JamOrder.Data.Models;
 
 namespace JamOrder.Core.Services.Token.Interface
 {
@@ -15,9 +14,9 @@ namespace JamOrder.Core.Services.Token.Interface
         /// <summary>
         /// Validate Token
         /// </summary>
-        /// <param name="validateTokenRequest"></param>
+        /// <param name="token"></param>
         /// <returns></returns>
-        Task<bool> ValidateToken(ValidateTokenRequest validateTokenRequest);
+        Task<bool> ValidateToken(string token);
 
         /// <summary>
         /// Kills Token During Logout

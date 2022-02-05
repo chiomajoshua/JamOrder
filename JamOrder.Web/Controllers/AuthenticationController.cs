@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using JamOrder.Core.Services.Authentication.Interface;
+using JamOrder.Core.Services.Customer.Interface;
+using JamOrder.Core.Services.Token.Interface;
+using JamOrder.Data.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 
 namespace JamOrder.Web.Controllers
 {
@@ -8,40 +11,64 @@ namespace JamOrder.Web.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        public AuthenticationController()
+        private readonly ICustomerService _customerService;
+        private readonly IAuthenticationService _authService;
+        private readonly ITokenService _tokenService;
+        public AuthenticationController(ICustomerService customerService, ITokenService tokenService, IAuthenticationService authService)
         {
-
-        }
-        // GET: api/<AuthenticationController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<AuthenticationController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            _customerService = customerService;
+            _authService = authService;
+            _tokenService = tokenService;
         }
 
-        // POST api/<AuthenticationController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost, Route("login")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Login(LoginRequest loginRequest)
         {
+            var userData = await _customerService.GetCustomerByEmailAsync(loginRequest.Email);
+
+            if (userData is null) return NotFound();
+
+            if(!userData.AccountStatus) return Unauthorized("Account is locked!. Please contact administrator");
+
+            if (await _authService.Login(loginRequest))
+            {
+                var token = await _tokenService.CreateToken(userData.CustomerId);
+                if(token == "----") return Unauthorized("Could not generate token. Please contact administrator.");
+                return Ok(new LoginResponse { Token = token, Email = userData.EmailAddress });
+            }
+            return Unauthorized("Invalid login credentials");
         }
 
-        // PUT api/<AuthenticationController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost, Route("validatetoken")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> ValidateToken(string token)
         {
+            if (string.IsNullOrEmpty(token)) return BadRequest("Request is empty");
+
+            if (await _tokenService.ValidateToken(token)) return Ok("Token Is Valid");
+            return Unauthorized("Token Is Invalid");
         }
 
-        // DELETE api/<AuthenticationController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost, Route("Logout")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> Logout(string customerId)
         {
+            if (string.IsNullOrEmpty(customerId)) return BadRequest("Request is empty");
+
+            if(await _tokenService.DestroyToken(customerId))
+                return Ok("Logout Successful");
+            return Forbid("Logout Unsuccessful");
         }
     }
 }

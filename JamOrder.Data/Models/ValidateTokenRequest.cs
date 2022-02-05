@@ -2,7 +2,6 @@
 {
     public class ValidateTokenRequest
     {
-        public string CustomerId { get; set; }
         public string Token { get; set; }
     }
 }

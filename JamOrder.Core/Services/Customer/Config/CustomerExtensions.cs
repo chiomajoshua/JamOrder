@@ -33,7 +33,8 @@ namespace JamOrder.Core.Services.Customer.Config
                 LastName = customer.LastName,
                 MiddleName = customer.MiddleName,
                 PhoneNumber = customer.PhoneNumber,
-                CustomerId = customer.Id.ToString()
+                CustomerId = customer.Id.ToString(),
+                AccountStatus = customer.AccountStatus
             };
         }
     }

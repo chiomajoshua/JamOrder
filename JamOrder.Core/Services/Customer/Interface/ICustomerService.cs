@@ -9,20 +9,27 @@ namespace JamOrder.Core.Services.Customer.Interface
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        Task<bool> CreateCustomer(CreateCustomerRequest createCustomerRequest);
+        Task<bool> CreateCustomerAsync(CreateCustomerRequest createCustomerRequest);
 
         /// <summary>
         /// Checks if Customer Exists
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        Task<bool> IsCustomerExists(string email);
+        Task<bool> IsCustomerExistsAsync(string email);
 
         /// <summary>
         /// Get Customer By Email
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-        Task<CustomerResponse> GetCustomer(string email);
+        Task<CustomerResponse> GetCustomerByEmailAsync(string email);
+
+        /// <summary>
+        /// Get Customer By Customer Id
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        Task<CustomerResponse> GetCustomerByIdAsync(string id);
     }
 }

@@ -35,9 +35,14 @@ namespace JamOrder.Core.DataRepository.Service
             return await _dapperRepository.InsertAsync(entity);
         }
 
-        public async Task<bool> UpdateAsync(T entity, params Expression<Func<T, object>>[] includes)
+        public virtual async Task<bool> UpdateAsync(T entity, params Expression<Func<T, object>>[] includes)
         {
             return await _dapperRepository.UpdateAsync(entity, includes);
+        }
+
+        public virtual async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dapperRepository.FindAllAsync(predicate);
         }
     }
 }

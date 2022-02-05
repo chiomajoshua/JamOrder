@@ -15,18 +15,17 @@ namespace JamOrder.Web.Controllers
             _customerService = customerService;
         }
 
-        [HttpPost]
-        [Route("OnboardCustomer")]
+        [HttpPost, Route("onboardcustomer")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> OnboardCustomer(CreateCustomerRequest createCustomerRequest)
         {
-            var customerResult = await _customerService.IsCustomerExists(createCustomerRequest.EmailAddress);
+            var customerResult = await _customerService.IsCustomerExistsAsync(createCustomerRequest.EmailAddress);
             if (customerResult) return Conflict();
 
-            if(await _customerService.CreateCustomer(createCustomerRequest)) return NoContent();
+            if(await _customerService.CreateCustomerAsync(createCustomerRequest)) return NoContent();
 
             return Problem();
         }
