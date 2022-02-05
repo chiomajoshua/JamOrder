@@ -17,10 +17,17 @@ namespace JamOrder.Core.DataRepository.Service
             return _dapperRepository.FindAsync(predicate);
         }
 
-        public virtual async Task<T> FirstOrDefaultAsync()
+        public virtual async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
         {
-            var result = await _dapperRepository.FindAllAsync();
+            var result = await _dapperRepository.FindAllAsync(predicate);
             return result.FirstOrDefault();
+        }
+
+        public virtual async Task<bool> Any(Expression<Func<T, bool>> predicate)
+        {
+            var result = await _dapperRepository.FindAsync(predicate);
+            if (result is null) return false;
+            return true;
         }
 
         public virtual async Task<bool> InsertAsync(T entity)
