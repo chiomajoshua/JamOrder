@@ -18,5 +18,11 @@ namespace JamOrder.Core.Services.Customer.Interface
         /// <returns></returns>
         Task<bool> IsCustomerExists(string email);
 
+        /// <summary>
+        /// Get Customer By Email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        Task<CustomerResponse> GetCustomer(string email);
     }
 }

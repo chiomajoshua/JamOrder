@@ -23,5 +23,18 @@ namespace JamOrder.Core.Services.Customer.Config
                 Password = Extensions.Encrypt(createCustomerRequest.Password)
             };
         }
+
+        public static CustomerResponse ToCustomer(this Data.Entities.Customer customer)
+        {
+            return new CustomerResponse
+            {                
+                EmailAddress = customer.EmailAddress,
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                MiddleName = customer.MiddleName,
+                PhoneNumber = customer.PhoneNumber,
+                CustomerId = customer.Id.ToString()
+            };
+        }
     }
 }

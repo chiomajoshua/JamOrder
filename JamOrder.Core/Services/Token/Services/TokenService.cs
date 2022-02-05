@@ -3,7 +3,6 @@ using JamOrder.Core.Services.DataRepository.Interface;
 using JamOrder.Core.Services.Token.Config;
 using JamOrder.Core.Services.Token.Interface;
 using JamOrder.Data.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace JamOrder.Core.Services.Token.Services
@@ -22,10 +21,9 @@ namespace JamOrder.Core.Services.Token.Services
         {
             try
             {
-                var token = Extensions.Encrypt($"{Guid.NewGuid().ToString().Replace("-", "")}+{DateTime.Now.Ticks}");
+                var token = Extensions.Encrypt($"{customerId}{Guid.NewGuid().ToString().Replace("-", "")}+{DateTime.Now.Ticks}");
                 var result = await SaveToken(new CreateTokenRequest { CustomerId = customerId, Token = token });
-                if (result) return token;
-                return "----";
+                return result ? token : "----";
             }
             catch (Exception ex)
             {
@@ -38,18 +36,21 @@ namespace JamOrder.Core.Services.Token.Services
         {
             try
             {
-                var result = await _tokenRepository.AnyAsync(x => x.CustomerId == validateTokenRequest.CustomerId && 
+                return await _tokenRepository.AnyAsync(x => x.CustomerId == validateTokenRequest.CustomerId && 
                                                                         x.Token == validateTokenRequest.Token &&
                                                                         DateTime.Now <= x.ExpiresAt &&
-                                                                        x.IsActive == true);
-                if (result) return true;
-                return false;
+                                                                        x.IsActive == true);               
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
+                _logger.LogError($"ValidateToken Error ----> Token Validation Failed for user {validateTokenRequest.CustomerId}. {ex.Message}");
                 return false;
             }
+        }
+
+        public async Task<bool> DestroyToken(string customerId)
+        {
+            return await _tokenRepository.UpdateAsync(new Data.Entities.TokenLog { IsActive = false }, x => x.CustomerId == customerId);
         }
 
         private async Task<bool> SaveToken(CreateTokenRequest tokenRequest)

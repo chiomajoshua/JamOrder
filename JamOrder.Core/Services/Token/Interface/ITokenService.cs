@@ -18,5 +18,12 @@ namespace JamOrder.Core.Services.Token.Interface
         /// <param name="validateTokenRequest"></param>
         /// <returns></returns>
         Task<bool> ValidateToken(ValidateTokenRequest validateTokenRequest);
+
+        /// <summary>
+        /// Kills Token During Logout
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        Task<bool> DestroyToken(string customerId);
     }
 }

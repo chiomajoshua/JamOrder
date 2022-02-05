@@ -30,6 +30,21 @@ namespace JamOrder.Core.Services.Customer.Services
             }
         }
 
+        public async Task<CustomerResponse> GetCustomer(string email)
+        {
+            try
+            {
+                _logger.LogInformation($"GetCustomer -----> Account Check for {email} at {DateTime.Now}");
+                var result = await _customerRepository.FirstOrDefaultAsync(x => x.EmailAddress == email);
+                return result?.ToCustomer();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"GetCustomer Error -----> Account Check Failed for {email}. {ex.Message}");
+                return null;
+            }
+        }
+
         public async Task<bool> IsCustomerExists(string email)
         {
             try

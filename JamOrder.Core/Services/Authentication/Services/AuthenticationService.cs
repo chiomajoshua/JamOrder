@@ -23,11 +23,9 @@ namespace JamOrder.Core.Services.Authentication.Services
                 _logger.LogInformation($"Login -----> {loginRequest.Email} tried to logon at {DateTime.Now}");
                 var userAccount = await _authenticationRepository.FirstOrDefaultAsync(x => x.EmailAddress == loginRequest.Email);
 
-                if(userAccount is null) return false;
+                if (userAccount is null) return false;
 
-                if (userAccount.EmailAddress == loginRequest.Email && Extensions.Decrypt(userAccount.Password).Equals(loginRequest.Password))
-                    return true;
-                return false;
+                return userAccount.EmailAddress == loginRequest.Email && Extensions.Decrypt(userAccount.Password).Equals(loginRequest.Password, StringComparison.Ordinal);
             }
             catch (Exception ex)
             {
