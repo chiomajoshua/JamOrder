@@ -23,7 +23,7 @@ namespace JamOrder.Core.DataRepository.Service
             return result.FirstOrDefault();
         }
 
-        public virtual async Task<bool> Any(Expression<Func<T, bool>> predicate)
+        public virtual async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
         {
             var result = await _dapperRepository.FindAsync(predicate);
             if (result is null) return false;

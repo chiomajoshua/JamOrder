@@ -21,10 +21,11 @@ namespace JamOrder.Core.Services.Authentication.Services
             try
             {
                 _logger.LogInformation($"Login -----> {loginRequest.Email} tried to logon at {DateTime.Now}");
-                var isAccountExists = await _authenticationRepository.FirstOrDefaultAsync(x => x.EmailAddress == loginRequest.Email);
-                if (isAccountExists is null) return false;
+                var userAccount = await _authenticationRepository.FirstOrDefaultAsync(x => x.EmailAddress == loginRequest.Email);
 
-                if (isAccountExists.EmailAddress == loginRequest.Email && Extensions.Decrypt(isAccountExists.Password).Equals(loginRequest.Password))
+                if(userAccount is null) return false;
+
+                if (userAccount.EmailAddress == loginRequest.Email && Extensions.Decrypt(userAccount.Password).Equals(loginRequest.Password))
                     return true;
                 return false;
             }
