@@ -25,7 +25,7 @@ namespace JamOrder.Core.Services.Customer.Services
             }
             catch (Exception ex)
             {
-                _logger.LogInformation($"IsCustomerExists Error -----> Account Creation Failed for {createCustomerRequest}. {ex.Message}");
+                _logger.LogError($"IsCustomerExists Error -----> Account Creation Failed for {createCustomerRequest}. {ex.Message}");
                 return false;
             }
         }
@@ -39,7 +39,7 @@ namespace JamOrder.Core.Services.Customer.Services
             }
             catch (Exception ex)
             {
-                _logger.LogInformation($"IsCustomerExists Error -----> Account Exist Check Failed for {email}. {ex.Message}");
+                _logger.LogError($"IsCustomerExists Error -----> Account Exist Check Failed for {email}. {ex.Message}");
                 return false;
             }
         }
