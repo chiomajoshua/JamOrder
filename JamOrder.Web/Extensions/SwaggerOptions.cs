@@ -25,7 +25,7 @@ namespace JamOrder.Core.Middleware
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "House 4 MS API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "JamOrder Web API V1");
             });
             return app;
         }
