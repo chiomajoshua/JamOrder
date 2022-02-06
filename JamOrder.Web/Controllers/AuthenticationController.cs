@@ -26,9 +26,9 @@ namespace JamOrder.Web.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Login(LoginRequest loginRequest)
+        public async Task<IActionResult> Post(LoginRequest loginRequest)
         {
-            var userData = await _customerService.GetCustomerByEmailAsync(loginRequest.Email);
+            var userData = await _customerService.GetCustomerByEmailAsync(loginRequest.EmailAddress);
 
             if (userData is null) return NotFound();
 
@@ -48,8 +48,9 @@ namespace JamOrder.Web.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> ValidateToken(string token)
+        public async Task<IActionResult> Post()
         {
+            var token = Request.Headers["Token"];
             if (string.IsNullOrEmpty(token)) return BadRequest("Request is empty");
 
             if (await _tokenService.ValidateToken(token)) return Ok("Token Is Valid");
@@ -62,7 +63,7 @@ namespace JamOrder.Web.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        public async Task<IActionResult> Logout(string customerId)
+        public async Task<IActionResult> Post(string customerId)
         {
             if (string.IsNullOrEmpty(customerId)) return BadRequest("Request is empty");
 

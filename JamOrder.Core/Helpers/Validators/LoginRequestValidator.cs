@@ -7,7 +7,7 @@ namespace JamOrder.Core.Helpers.Validators
     {
         public LoginRequestValidator()
         {
-            RuleFor(x => x.Email).NotEmpty().NotNull().EmailAddress();
+            RuleFor(x => x.EmailAddress).NotEmpty().NotNull().EmailAddress();
             RuleFor(x => x.Password).NotEmpty().NotNull().NotEqual("string");
         }
     }

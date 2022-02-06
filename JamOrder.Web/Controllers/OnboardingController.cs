@@ -20,7 +20,7 @@ namespace JamOrder.Web.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<IActionResult> OnboardCustomer(CreateCustomerRequest createCustomerRequest)
+        public async Task<IActionResult> Post(CreateCustomerRequest createCustomerRequest)
         {
             var customerResult = await _customerService.IsCustomerExistsAsync(createCustomerRequest.EmailAddress);
             if (customerResult) return Conflict();
