@@ -48,8 +48,9 @@ namespace JamOrder.Web.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> ValidateToken(string token)
+        public async Task<IActionResult> ValidateToken()
         {
+            var token = Request.Headers["Token"];
             if (string.IsNullOrEmpty(token)) return BadRequest("Request is empty");
 
             if (await _tokenService.ValidateToken(token)) return Ok("Token Is Valid");

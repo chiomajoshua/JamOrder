@@ -18,11 +18,18 @@ Log.Information("Starting up");
 
 try
 {
-    var builder = WebApplication.CreateBuilder(args);
+    var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+    {
+        ApplicationName = typeof(Program).Assembly.FullName,
+        ContentRootPath = Directory.GetCurrentDirectory()
+    });
+
+    builder.Services.AddMemoryCache();
 
     // Add services to the container.
     builder.Host.UseSerilog((ctx, lc) => lc
        .WriteTo.Console()
+       .WriteTo.Seq("http://localhost:5341")
        .ReadFrom.Configuration(ctx.Configuration));
     builder.Services.RegisterDatabaseService(builder.Configuration);
     builder.Services.AddControllers()

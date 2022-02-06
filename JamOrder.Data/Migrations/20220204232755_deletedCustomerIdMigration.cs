@@ -4,7 +4,7 @@
 
 namespace JamOrder.Data.Migrations
 {
-    public partial class deletedCustomerIdMigration : Migration
+    public partial class DeletedCustomerIdMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -13,7 +13,7 @@ namespace JamOrder.Data.Migrations
 {
     [DbContext(typeof(JamOrderDbContext))]
     [Migration("20220204232522_initMigration")]
-    partial class initMigration
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

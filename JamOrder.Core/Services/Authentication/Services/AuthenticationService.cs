@@ -20,7 +20,7 @@ namespace JamOrder.Core.Services.Authentication.Services
         {
             try
             {
-                _logger.LogInformation($"Login -----> {loginRequest.Email} tried to logon at {DateTime.Now}");
+                _logger.LogInformation(message: $"Login -----> {loginRequest.Email} tried to logon at {DateTime.Now}");
                 var userAccount = await _authenticationRepository.FirstOrDefaultAsync(x => x.EmailAddress == loginRequest.Email);
 
                 if (userAccount is null) return false;

@@ -13,7 +13,7 @@ namespace JamOrder.Data.Migrations
 {
     [DbContext(typeof(JamOrderDbContext))]
     [Migration("20220204232755_deletedCustomerIdMigration")]
-    partial class deletedCustomerIdMigration
+    partial class DeletedCustomerIdMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
