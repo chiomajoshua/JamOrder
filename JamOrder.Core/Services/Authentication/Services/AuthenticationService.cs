@@ -20,16 +20,16 @@ namespace JamOrder.Core.Services.Authentication.Services
         {
             try
             {
-                _logger.LogInformation(message: $"Login -----> {loginRequest.Email} tried to logon at {DateTime.Now}");
-                var userAccount = await _authenticationRepository.FirstOrDefaultAsync(x => x.EmailAddress == loginRequest.Email);
+                _logger.LogInformation(message: $"Login -----> {loginRequest.EmailAddress} tried to logon at {DateTime.Now}");
+                var userAccount = await _authenticationRepository.FirstOrDefaultAsync(x => x.EmailAddress == loginRequest.EmailAddress);
 
                 if (userAccount is null) return false;
 
-                return userAccount.EmailAddress == loginRequest.Email && Extensions.Decrypt(userAccount.Password).Equals(loginRequest.Password, StringComparison.Ordinal);
+                return userAccount.EmailAddress == loginRequest.EmailAddress && Extensions.Decrypt(userAccount.Password).Equals(loginRequest.Password, StringComparison.Ordinal);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Login Error ----> Login Failed for user {loginRequest.Email}. {ex.Message}");
+                _logger.LogError($"Login Error ----> Login Failed for user {loginRequest.EmailAddress}. {ex.Message}");
                 return false;
             }
         }
