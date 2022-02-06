@@ -5,6 +5,6 @@ namespace JamOrder.Data.Models
     public class LoginResponse
     {
         public string Token { get; set; }
-        public Customer Customer { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -18,8 +18,4 @@
     <ProjectReference Include="..\JamOrder.Data\JamOrder.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\Extensions\" />
-  </ItemGroup>
-
 </Project>

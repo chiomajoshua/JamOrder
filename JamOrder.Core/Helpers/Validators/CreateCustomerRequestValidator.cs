@@ -7,7 +7,6 @@ namespace JamOrder.Core.Helpers.Validators
     {
         public CreateCustomerRequestValidator()
         {
-            RuleFor(x => x.CustomerId).NotEmpty().NotNull().NotEqual("string");
             RuleFor(x => x.FirstName).NotEmpty().NotNull().NotEqual("string");
             RuleFor(x => x.LastName).NotEmpty().NotNull().NotEqual("string");
             RuleFor(x => x.EmailAddress).NotEmpty().NotNull().EmailAddress();
