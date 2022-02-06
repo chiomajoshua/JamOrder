@@ -10,6 +10,7 @@ We are building a web app for food ordering. The app is going to be built with t
     |        └── JamOrder.Web   # JamOrder Web API
              └── JamOrder.Core  # Core Logic
              └── JamOrder.Data  # Database Layer
+             └── JamOrder.Tests # Tests
     ├── .gitignore              # Git ignore.
     ├── README.md               # This file.
     
