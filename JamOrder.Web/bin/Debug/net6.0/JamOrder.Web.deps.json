@@ -16,6 +16,7 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.14.0",
           "Newtonsoft.Json": "13.0.1",
           "Serilog.AspNetCore": "4.1.0",
+          "Serilog.Sinks.Seq": "5.1.1",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -607,6 +608,33 @@
           }
         }
       },
+      "Serilog.Sinks.PeriodicBatching/2.3.0": {
+        "dependencies": {
+          "Serilog": "2.10.0",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Threading.Timer": "4.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Serilog.Sinks.PeriodicBatching.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.3.0.0"
+          }
+        }
+      },
+      "Serilog.Sinks.Seq/5.1.1": {
+        "dependencies": {
+          "Serilog": "2.10.0",
+          "Serilog.Formatting.Compact": "1.1.0",
+          "Serilog.Sinks.File": "4.1.0",
+          "Serilog.Sinks.PeriodicBatching": "2.3.0"
+        },
+        "runtime": {
+          "lib/net5.0/Serilog.Sinks.Seq.dll": {
+            "assemblyVersion": "5.1.1.0",
+            "fileVersion": "5.1.1.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.2.3": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "3.0.0",
@@ -657,6 +685,20 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.Collections.Concurrent/4.0.12": {
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
+          "System.Globalization": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        }
+      },
       "System.Collections.Immutable/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -693,6 +735,13 @@
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Diagnostics.Tracing/4.1.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
         }
       },
       "System.Drawing.Common/4.7.0": {
@@ -1520,6 +1569,20 @@
       "path": "serilog.sinks.file/4.1.0",
       "hashPath": "serilog.sinks.file.4.1.0.nupkg.sha512"
     },
+    "Serilog.Sinks.PeriodicBatching/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UYKSjTMTlUY9T3OgzMmLDLD+z0qPfgvq/RvG0rKfyz+O+Zrjw3X/Xpv14J4WMcGVsOjUaR+k8n2MdmqVpJtI6A==",
+      "path": "serilog.sinks.periodicbatching/2.3.0",
+      "hashPath": "serilog.sinks.periodicbatching.2.3.0.nupkg.sha512"
+    },
+    "Serilog.Sinks.Seq/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+BsIoanNyZPEcWY5sVtx2nL/88UcCw9gr/l0nCfe4bjuSoFS2clDIUmKaH1UXA/hx9undHCgw4epVltOulGuxw==",
+      "path": "serilog.sinks.seq/5.1.1",
+      "hashPath": "serilog.sinks.seq.5.1.1.nupkg.sha512"
+    },
     "Swashbuckle.AspNetCore/6.2.3": {
       "type": "package",
       "serviceable": true,
@@ -1562,6 +1625,13 @@
       "path": "system.collections/4.0.11",
       "hashPath": "system.collections.4.0.11.nupkg.sha512"
     },
+    "System.Collections.Concurrent/4.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2gBcbb3drMLgxlI0fBfxMA31ec6AEyYCHygGse4vxceJan8mRIWeKJ24BFzN7+bi/NFTgdIgufzb94LWO5EERQ==",
+      "path": "system.collections.concurrent/4.0.12",
+      "hashPath": "system.collections.concurrent.4.0.12.nupkg.sha512"
+    },
     "System.Collections.Immutable/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1596,6 +1666,13 @@
       "sha512": "sha512-frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
       "path": "system.diagnostics.diagnosticsource/6.0.0",
       "hashPath": "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512"
+    },
+    "System.Diagnostics.Tracing/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vDN1PoMZCkkdNjvZLql592oYJZgS7URcJzJ7bxeBgGtx5UtR5leNm49VmfHGqIffX4FKacHbI3H6UyNSHQknBg==",
+      "path": "system.diagnostics.tracing/4.1.0",
+      "hashPath": "system.diagnostics.tracing.4.1.0.nupkg.sha512"
     },
     "System.Drawing.Common/4.7.0": {
       "type": "package",
